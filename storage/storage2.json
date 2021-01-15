@@ -10,7 +10,7 @@
   "variables": {},
   "resources": [
     {
-      "name": "bcazrstorage2",
+      "name": "bcazrstorage1",
       "type": "Microsoft.Storage/storageAccounts",
       "apiVersion": "2019-06-01",
       "location": "[parameters('location')]",
