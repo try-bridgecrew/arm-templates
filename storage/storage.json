@@ -74,6 +74,37 @@
           ]
         }
       ]
+    },
+    {
+      "name": "[parameters('storageAccountName')]",
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2019-06-01",
+      "location": "[parameters('location')]",
+      "properties": {
+        "accessTier": "[parameters('accessTier')]",
+        "minimumTlsVersion": "[parameters('minimumTlsVersion')]",
+        "supportsHttpsTrafficOnly": "[parameters('supportsHttpsTrafficOnly')]",
+        "allowBlobPublicAccess": "[parameters('allowBlobPublicAccess')]"
+      },
+      "dependsOn": [],
+      "sku": {
+        "name": "[parameters('accountType')]"
+      },
+      "kind": "[parameters('kind')]",
+      "tags": {},
+      "resources": [
+        {
+          "type": "blobServices/containers",
+          "apiVersion": "2019-06-01",
+          "name": "[concat('default/', parameters('containerName'))]",
+          "properties": {
+            "publicAccess": "Container"
+          },
+          "dependsOn": [
+            "[parameters('storageAccountName')]"
+          ]
+        }
+      ]
     }
   ],
   "outputs": {}
